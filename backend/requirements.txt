@@ -10,3 +10,4 @@ PyMuPDF
 Pillow
 face_recognition
 dlib
+gunicorn==20.1.0
