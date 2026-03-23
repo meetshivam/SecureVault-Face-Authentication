@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #3b82f6;
+  --color-primary-dark: #2563eb;
+  --color-indigo: #6366f1;
+  --color-violet: #8b5cf6;
+  --color-surface: #ffffff;
+  --color-surface-alt: #f8fafc;
+  --color-border: #e2e8f0;
+  --color-border-hover: #93c5fd;
+  --color-text: #0f172a;
+  --color-text-muted: #64748b;
+  --color-glass: rgba(255, 255, 255, 0.8);
+  --color-glass-border: rgba(226, 232, 240, 0.8);
+  --font-heading: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+/* Base */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #ffffff;
+  color: #0f172a;
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+
+/* Glow Effects */
+.glow-blue {
+  box-shadow: 0 6px 30px rgba(59, 130, 246, 0.5), 0 12px 60px rgba(59, 130, 246, 0.3);
+}
+.glow-indigo {
+  box-shadow: 0 6px 30px rgba(99, 102, 241, 0.5), 0 12px 60px rgba(99, 102, 241, 0.3);
+}
+.glow-violet {
+  box-shadow: 0 6px 30px rgba(139, 92, 246, 0.5), 0 12px 60px rgba(139, 92, 246, 0.3);
+}
+
+/* Glassmorphism — Light mode */
+.glass {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+.glass-dark {
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Animations */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 4px 20px rgba(59, 130, 246, 0.4);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 10px 50px rgba(59, 130, 246, 0.7);
+    transform: scale(1.03);
+  }
+}
+.pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+@keyframes scan-rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.scan-ring {
+  animation: scan-rotate 4s linear infinite;
+}
+
+@keyframes ticker-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.ticker {
+  animation: ticker-scroll 40s linear infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+.float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Button magnetic hover */
+.button-magnetic {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Border shimmer effect */
+.border-shimmer {
+  position: relative;
+}
+.border-shimmer::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.6), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 2.5s infinite;
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.border-shimmer:hover::after {
+  opacity: 1;
+}
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Ripple effect on buttons */
+.ripple-effect {
+  position: relative;
+  overflow: hidden;
+}
+.ripple-effect::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.3) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+.ripple-effect:hover::before {
+  opacity: 1;
+}
+.ripple-effect:active {
+  transform: scale(0.96);
+}
+
+/* Scrollbar — Light theme */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #f1f5f9; }
+::-webkit-scrollbar-thumb { background: rgba(59, 130, 246, 0.3); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(59, 130, 246, 0.5); }
+
+/* Utility: scroll reveal (fallback for non-framer pages) */
+.reveal {
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}

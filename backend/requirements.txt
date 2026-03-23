@@ -1,0 +1,12 @@
+opencv-python
+flask
+flask-cors
+numpy
+pymongo
+pyjwt
+python-dotenv
+cryptography
+PyMuPDF
+Pillow
+face_recognition
+dlib
