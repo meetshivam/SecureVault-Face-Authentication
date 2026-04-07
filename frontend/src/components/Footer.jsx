@@ -44,7 +44,7 @@ export default function Footer() {
               <li><a href="#" className="hover:text-blue-400 transition-colors">Documentation</a></li>
               <li><a href="#" className="hover:text-blue-400 transition-colors">API Reference</a></li>
               <li><a href="#" className="hover:text-blue-400 transition-colors">Support</a></li>
-              <li><a href="#" className="hover:text-blue-400 transition-colors">GitHub</a></li>
+              <li><a href="https://github.com/meetshivam" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 transition-colors">GitHub</a></li>
             </ul>
           </div>
         </div>
@@ -52,14 +52,20 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-gray-800">
           <p className="text-gray-500 text-xs mb-4 md:mb-0">© {new Date().getFullYear()} SecureVault. All rights reserved.</p>
           <div className="flex gap-2.5">
-            {[Github, Twitter, Linkedin].map((Icon, i) => (
+            {[
+              { Icon: Github, url: 'https://github.com/meetshivam' },
+              { Icon: Twitter, url: '#' },
+              { Icon: Linkedin, url: 'https://www.linkedin.com/in/shivvam20/?skipRedirect=true' }
+            ].map((item, i) => (
               <motion.a
                 key={i}
-                href="#"
+                href={item.url}
+                target={item.url !== '#' ? '_blank' : undefined}
+                rel={item.url !== '#' ? 'noopener noreferrer' : undefined}
                 className="w-9 h-9 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-blue-600 transition-all duration-300"
                 whileHover={{ scale: 1.15, rotate: 5 }}
               >
-                <Icon className="w-4 h-4" />
+                <item.Icon className="w-4 h-4" />
               </motion.a>
             ))}
           </div>

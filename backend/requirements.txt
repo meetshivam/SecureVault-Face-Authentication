@@ -8,6 +8,7 @@ python-dotenv
 cryptography
 PyMuPDF
 Pillow
+setuptools<70
 face_recognition
 dlib
 gunicorn==20.1.0
